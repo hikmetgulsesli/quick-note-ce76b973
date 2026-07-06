@@ -49,12 +49,23 @@ function isQuickNoteRecord(value: unknown): value is QuickNoteRecord {
   );
 }
 
+/**
+ * Validate every persisted record and return only the well-formed
+ * ones. Malformed entries are silently dropped instead of failing the
+ * whole batch — a single corrupt record must not invalidate the user's
+ * entire history.
+ *
+ * Returns `null` only when the input is not an array at all (caller
+ * already checked this), preserving the original "shape invalid"
+ * signal while letting partial corruption recover gracefully.
+ */
 function sanitizeRecords(input: unknown): QuickNoteRecord[] | null {
   if (!Array.isArray(input)) return null;
   const out: QuickNoteRecord[] = [];
   for (const entry of input) {
-    if (!isQuickNoteRecord(entry)) return null;
-    out.push(entry);
+    if (isQuickNoteRecord(entry)) {
+      out.push(entry);
+    }
   }
   return out;
 }

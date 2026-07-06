@@ -15,22 +15,28 @@ import type {
  * Screen-owner stories may attach their own bridges (e.g. for editor
  * forms or insights filtering) but must not mutate the shell shape
  * declared here.
+ *
+ * Live-read contract: the handle's properties are exposed via ES6
+ * getters that dynamically read from a module-level mutable reference
+ * to the latest store context. This ensures that a test which holds
+ * `const app = window.app` and later triggers an action observes the
+ * updated state instead of a stale snapshot captured at mount time.
  */
 
 export interface QuickNoteAppHandle {
   /** Current shell state. */
-  state: QuickNoteContextValue['state'];
+  readonly state: QuickNoteContextValue['state'];
   /** Derived counts (total / draft / active / archived). */
-  counts: QuickNoteContextValue['counts'];
+  readonly counts: QuickNoteContextValue['counts'];
   /** Convenience getters for common shell fields. */
-  activeSurface: QuickNoteSurfaceId;
-  activePanel: QuickNotePanelId;
-  selectedRecordId: string | null;
-  storageStatus: QuickNoteContextValue['state']['storageStatus'];
-  storageMessage: string | null;
-  lastError: string | null;
+  readonly activeSurface: QuickNoteSurfaceId;
+  readonly activePanel: QuickNotePanelId;
+  readonly selectedRecordId: string | null;
+  readonly storageStatus: QuickNoteContextValue['state']['storageStatus'];
+  readonly storageMessage: string | null;
+  readonly lastError: string | null;
   /** Stable navigation/action handlers for screen-owner stories. */
-  actions: {
+  readonly actions: {
     bootstrap: () => void;
     setActiveSurface: (surface: QuickNoteSurfaceId) => void;
     setActivePanel: (panel: QuickNotePanelId) => void;
@@ -51,32 +57,59 @@ declare global {
 }
 
 let mountedHandle: QuickNoteAppHandle | null = null;
+/**
+ * Module-level mutable reference to the latest store context. Each
+ * remount of the bridge (e.g. on React re-render) updates this so
+ * getters read live values instead of the snapshot captured at the
+ * first mount.
+ */
+let currentStore: QuickNoteContextValue | null = null;
 
 /**
  * Mount the test bridge for the given provider value. Idempotent: calling
  * twice replaces the previous handle rather than stacking listeners, so
- * HMR and test remounts stay safe.
+ * HMR and test remounts stay safe. Properties are ES6 getters so callers
+ * that captured `window.app` before a state update still observe the
+ * latest values.
  */
 export function mountQuickNoteAppBridge(value: QuickNoteContextValue): QuickNoteAppHandle {
+  currentStore = value;
   const handle: QuickNoteAppHandle = {
-    state: value.state,
-    counts: value.counts,
-    activeSurface: value.state.activeSurface,
-    activePanel: value.state.activePanel,
-    selectedRecordId: value.state.selectedRecordId,
-    storageStatus: value.state.storageStatus,
-    storageMessage: value.state.storageMessage,
-    lastError: value.state.lastError,
+    get state() {
+      return (currentStore ?? value).state;
+    },
+    get counts() {
+      return (currentStore ?? value).counts;
+    },
+    get activeSurface() {
+      return (currentStore ?? value).state.activeSurface;
+    },
+    get activePanel() {
+      return (currentStore ?? value).state.activePanel;
+    },
+    get selectedRecordId() {
+      return (currentStore ?? value).state.selectedRecordId;
+    },
+    get storageStatus() {
+      return (currentStore ?? value).state.storageStatus;
+    },
+    get storageMessage() {
+      return (currentStore ?? value).state.storageMessage;
+    },
+    get lastError() {
+      return (currentStore ?? value).state.lastError;
+    },
     actions: {
-      bootstrap: value.bootstrap,
-      setActiveSurface: value.setActiveSurface,
-      setActivePanel: value.setActivePanel,
-      setSelectedRecord: value.setSelectedRecord,
-      setLastError: value.setLastError,
-      setStorageStatus: value.setStorageStatus,
-      upsertRecord: value.upsertRecord,
-      deleteRecord: value.deleteRecord,
-      dispatch: value.dispatch,
+      bootstrap: () => (currentStore ?? value).bootstrap(),
+      setActiveSurface: (surface) => (currentStore ?? value).setActiveSurface(surface),
+      setActivePanel: (panel) => (currentStore ?? value).setActivePanel(panel),
+      setSelectedRecord: (recordId) => (currentStore ?? value).setSelectedRecord(recordId),
+      setLastError: (message) => (currentStore ?? value).setLastError(message),
+      setStorageStatus: (status, message) =>
+        (currentStore ?? value).setStorageStatus(status, message),
+      upsertRecord: (record) => (currentStore ?? value).upsertRecord(record),
+      deleteRecord: (recordId) => (currentStore ?? value).deleteRecord(recordId),
+      dispatch: (action) => (currentStore ?? value).dispatch(action),
     },
   };
   if (typeof window !== 'undefined') {
@@ -92,6 +125,7 @@ export function unmountQuickNoteAppBridge(): void {
     delete window.app;
   }
   mountedHandle = null;
+  currentStore = null;
 }
 
 /** Return the currently mounted handle, if any. */

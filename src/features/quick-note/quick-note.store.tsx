@@ -155,6 +155,13 @@ export function QuickNoteProvider({
 
   // Persist on every state change once hydrated.
   const hydratedRef = useRef(false);
+  /**
+   * Signature of the last payload we actually attempted to persist.
+   * Used to suppress redundant `saveQuickNoteState` calls when the
+   * effect re-runs because a status-transition dispatch updated
+   * `state.storageStatus` without changing any persistable data.
+   */
+  const lastSavedPayloadRef = useRef<string | null>(null);
   useEffect(() => {
     if (disablePersistence) return;
     if (!state.hydrated) return;
@@ -162,6 +169,22 @@ export function QuickNoteProvider({
       hydratedRef.current = true;
       return;
     }
+    // Only the deterministic shape is persisted; runtime flags
+    // (storageStatus, storageMessage, lastError) must NOT count as a
+    // payload change because they flip in response to our own save.
+    const persistable = {
+      records: state.records,
+      selectedRecordId: state.selectedRecordId,
+      activeSurface: state.activeSurface,
+      activePanel: state.activePanel,
+    };
+    const signature = JSON.stringify(persistable);
+    if (signature === lastSavedPayloadRef.current) {
+      // Same payload as the previous attempt — only the runtime
+      // status fields changed. Skip the redundant localStorage write.
+      return;
+    }
+    lastSavedPayloadRef.current = signature;
     const ok = saveQuickNoteState(state);
     if (!ok) {
       if (state.storageStatus !== 'error') {
