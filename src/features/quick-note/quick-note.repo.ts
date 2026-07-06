@@ -67,10 +67,16 @@ function sanitizeState(raw: unknown): QuickNoteState | null {
   if (!records) return null;
   if (!isQuickNoteSurfaceId(candidate.activeSurface)) return null;
   if (!isQuickNotePanelId(candidate.activePanel)) return null;
+  // Defensive: only honor `selectedRecordId` when it is a string AND
+  // references an existing record in the sanitized set. A stale or
+  // missing id would crash screens that assume the selected record is
+  // present whenever `selectedRecordId` is non-null. Fall back to null
+  // in that case so the UI can render a safe default.
+  const candidateSelectedRecordId = candidate.selectedRecordId;
   const selectedRecordId =
-    typeof candidate.selectedRecordId === 'string' &&
-    records.some((r) => r.id === candidate.selectedRecordId)
-      ? (candidate.selectedRecordId as string | null)
+    typeof candidateSelectedRecordId === 'string' &&
+    records.some((r) => r.id === candidateSelectedRecordId)
+      ? candidateSelectedRecordId
       : null;
   return {
     records,
