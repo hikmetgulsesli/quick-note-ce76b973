@@ -178,24 +178,14 @@ export function RecordOperationsQuickNote({ actions }: RecordOperationsQuickNote
 
   const onEditRow = (event: ReactMouseEvent<HTMLButtonElement>, rowId: string | null) => {
     event.stopPropagation();
-    const recordId = readSelectedRecordIdFromDom(event.currentTarget)
-      ?? rowId
-      ?? selectedRecord?.id
-      ?? null;
+    // `rowId` is already in the React component's closure from the
+    // row map, so there is no need to query the DOM for it. Fall
+    // back to the currently selected record so a stale render still
+    // has a sensible target.
+    const recordId = rowId ?? selectedRecord?.id ?? null;
     actSelectRecord(store, recordId, { openEditor: true });
-    const editActionId = `edit-${rowId ?? 'x'}` as RecordOperationsQuickNoteActionId;
+    const editActionId = ('edit-' + (rowId ?? 'x')) as RecordOperationsQuickNoteActionId;
     actions?.[editActionId]?.();
-  };
-
-  const onDeleteRow = (event: ReactMouseEvent<HTMLButtonElement>, rowId: string | null) => {
-    event.stopPropagation();
-    const recordId = readSelectedRecordIdFromDom(event.currentTarget)
-      ?? rowId
-      ?? selectedRecord?.id
-      ?? null;
-    if (recordId) {
-      store.deleteRecord(recordId);
-    }
   };
 
   const onRetry = (event: ReactMouseEvent<HTMLButtonElement>) => {

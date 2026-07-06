@@ -78,22 +78,13 @@ export function RecordEditorQuickNote({ actions }: RecordEditorQuickNoteProps) {
 
   const onSave = (event?: ReactMouseEvent<HTMLButtonElement>) => {
     event?.preventDefault();
-    // Pull the latest values directly from the DOM so the screen
-    // stays in sync with the generated inputs even if a future
-    // render path bypasses the React state setters. We deliberately
-    // check for the presence of each input before falling back to
-    // React state so that clearing a field (e.g. emptying the body
-    // or removing every tag) is honored instead of getting masked
-    // by a falsy empty-string fallback.
-    const titleInput = document.querySelector<HTMLInputElement>('input[name="note-title"]');
-    const bodyInput = document.querySelector<HTMLTextAreaElement>('textarea[name="note-body"]');
-    const tagsInputElem = document.querySelector<HTMLInputElement>('input[name="note-tags"]');
-
-    const finalTitle = titleInput ? titleInput.value : title;
-    const finalBody = bodyInput ? bodyInput.value : body;
-    const finalTags = tagsInputElem
-      ? parseTagsString(tagsInputElem.value)
-      : parseTagsString(tagsInput);
+    // Inputs are fully controlled React state, so the state
+    // variables are the single source of truth — no need to reach
+    // for `document.querySelector` here (which would break if the
+    // component were ever rendered multiple times or in SSR).
+    const finalTitle = title;
+    const finalBody = body;
+    const finalTags = parseTagsString(tagsInput);
 
     setTitleError(!finalTitle.trim());
     if (!finalTitle.trim()) {
@@ -121,16 +112,22 @@ export function RecordEditorQuickNote({ actions }: RecordEditorQuickNoteProps) {
 
   const onCancelClick = (event: ReactMouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    if (dirty) {
+    // Surface the unsaved-changes warning the first time the user
+    // tries to leave with a dirty form. We return early after showing
+    // it so the cancel action doesn't immediately tear down the
+    // component before the user can react.
+    if (dirty && !showUnsavedNotice) {
       setShowUnsavedNotice(true);
+      return;
     }
     actCancelEdit(store);
   };
 
   const onBackToNotes = (event: ReactMouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    if (dirty) {
+    if (dirty && !showUnsavedNotice) {
       setShowUnsavedNotice(true);
+      return;
     }
     actCancelEdit(store);
   };

@@ -32,12 +32,10 @@ export interface RetryLoadResult {
 export function actRetryLoad(store: QuickNoteContextValue): RetryLoadResult {
   store.setStorageStatus('loading', 'Retrying record load…');
   try {
-    store.bootstrap();
-    // React state updates from `store.bootstrap()` are asynchronous
-    // and batched, so `store.state.storageStatus` will not have
-    // refreshed yet at this point. Call `loadQuickNoteState()`
-    // directly to read the freshly persisted payload and decide
-    // success vs. error synchronously.
+    // Load the persisted state exactly once (synchronous localStorage
+    // I/O + JSON parse) and inspect the result synchronously to
+    // decide success vs. error. We then dispatch the BOOTSTRAP payload
+    // ourselves so the store hydrates without re-running the load.
     const result = loadQuickNoteState();
     if (result.storageStatus === 'error') {
       const msg = result.storageMessage ?? 'Failed to reload records.';
@@ -45,6 +43,7 @@ export function actRetryLoad(store: QuickNoteContextValue): RetryLoadResult {
       store.setStorageStatus('error', msg);
       return { ok: false, status: 'error', message: msg };
     }
+    store.dispatch({ type: 'BOOTSTRAP', payload: result.state });
     store.setLastError(null);
     store.setStorageStatus('ready');
     return { ok: true, status: 'ready', message: null };
