@@ -24,6 +24,11 @@ import type { QuickNoteSurfaceId } from './features/quick-note/quick-note.types'
  *   Insights) stay reachable through the shared active-surface switch.
  *   We do NOT delete or stop rendering previously integrated screens;
  *   we only route between them based on `state.activeSurface`.
+ * - The mount root is a relative flex container so generated full-screen
+ *   Stitch screens that own a sibling sidebar + content layout render
+ *   side-by-side at desktop widths while keeping a stable viewport
+ *   height and positioning for absolute/fixed elements (e.g. the
+ *   desktop side navigation).
  */
 
 function ActiveSurface() {
@@ -47,7 +52,7 @@ function ActiveSurface() {
       data-setfarm-surface={state.activeSurface}
       data-testid="setfarm-app-root"
       data-testid-surface="setfarm-active-surface"
-      className="min-h-screen bg-slate-50 text-slate-950"
+      className="relative !flex min-h-screen w-full overflow-x-hidden bg-slate-50 text-slate-950"
     >
       {renderSurface(state.activeSurface)}
     </div>
