@@ -1,0 +1,323 @@
+[
+  {
+    "screenId": "99eea68841f948e3b864707c968e4e0f",
+    "title": "Insights - Quick Note",
+    "componentName": "InsightsQuickNote",
+    "file": "src/screens/InsightsQuickNote.tsx",
+    "buttons": 5,
+    "inputs": 0,
+    "links": 6,
+    "actions": [
+      {
+        "id": "new-note-1",
+        "kind": "button",
+        "label": "New Note",
+        "index": 0
+      },
+      {
+        "id": "settings-2",
+        "kind": "button",
+        "label": "Settings",
+        "index": 1
+      },
+      {
+        "id": "account-circle-3",
+        "kind": "button",
+        "label": "Account Circle",
+        "index": 2
+      },
+      {
+        "id": "filter-4",
+        "kind": "button",
+        "label": "Filter",
+        "index": 3
+      },
+      {
+        "id": "export-5",
+        "kind": "button",
+        "label": "Export",
+        "index": 4
+      },
+      {
+        "id": "notes-1",
+        "kind": "link",
+        "label": "Notes",
+        "href": "#",
+        "index": 0
+      },
+      {
+        "id": "insights-2",
+        "kind": "link",
+        "label": "Insights",
+        "href": "#",
+        "index": 1
+      },
+      {
+        "id": "archive-3",
+        "kind": "link",
+        "label": "Archive",
+        "href": "#",
+        "index": 2
+      },
+      {
+        "id": "settings-4",
+        "kind": "link",
+        "label": "Settings",
+        "href": "#",
+        "index": 3
+      },
+      {
+        "id": "help-5",
+        "kind": "link",
+        "label": "Help",
+        "href": "#",
+        "index": 4
+      },
+      {
+        "id": "review-them-6",
+        "kind": "link",
+        "label": "Review them",
+        "href": "#",
+        "index": 5
+      }
+    ]
+  },
+  {
+    "screenId": "c927dd96045f4b58b39702a500d8d936",
+    "title": "Record Editor - Quick Note",
+    "componentName": "RecordEditorQuickNote",
+    "file": "src/screens/RecordEditorQuickNote.tsx",
+    "buttons": 8,
+    "inputs": 2,
+    "links": 7,
+    "actions": [
+      {
+        "id": "settings-1",
+        "kind": "button",
+        "label": "Settings",
+        "index": 0
+      },
+      {
+        "id": "account-circle-2",
+        "kind": "button",
+        "label": "Account Circle",
+        "index": 1
+      },
+      {
+        "id": "create-3",
+        "kind": "button",
+        "label": "Create",
+        "index": 2
+      },
+      {
+        "id": "new-note-4",
+        "kind": "button",
+        "label": "New Note",
+        "index": 3
+      },
+      {
+        "id": "back-to-notes-5",
+        "kind": "button",
+        "label": "Back to Notes",
+        "index": 4
+      },
+      {
+        "id": "cancel-6",
+        "kind": "button",
+        "label": "Cancel",
+        "index": 5
+      },
+      {
+        "id": "save-note-7",
+        "kind": "button",
+        "label": "Save Note",
+        "index": 6
+      },
+      {
+        "id": "close-8",
+        "kind": "button",
+        "label": "Close",
+        "index": 7
+      },
+      {
+        "id": "notes-1",
+        "kind": "link",
+        "label": "Notes",
+        "href": "#",
+        "index": 0
+      },
+      {
+        "id": "insights-2",
+        "kind": "link",
+        "label": "Insights",
+        "href": "#",
+        "index": 1
+      },
+      {
+        "id": "notes-3",
+        "kind": "link",
+        "label": "Notes",
+        "href": "#",
+        "index": 2
+      },
+      {
+        "id": "insights-4",
+        "kind": "link",
+        "label": "Insights",
+        "href": "#",
+        "index": 3
+      },
+      {
+        "id": "archive-5",
+        "kind": "link",
+        "label": "Archive",
+        "href": "#",
+        "index": 4
+      },
+      {
+        "id": "settings-6",
+        "kind": "link",
+        "label": "Settings",
+        "href": "#",
+        "index": 5
+      },
+      {
+        "id": "help-7",
+        "kind": "link",
+        "label": "Help",
+        "href": "#",
+        "index": 6
+      }
+    ]
+  },
+  {
+    "screenId": "db509871a0134c329f3053d7584c2513",
+    "title": "Record Operations - Quick Note",
+    "componentName": "RecordOperationsQuickNote",
+    "file": "src/screens/RecordOperationsQuickNote.tsx",
+    "buttons": 14,
+    "inputs": 1,
+    "links": 5,
+    "actions": [
+      {
+        "id": "new-note-1",
+        "kind": "button",
+        "label": "New Note",
+        "index": 0
+      },
+      {
+        "id": "settings-2",
+        "kind": "button",
+        "label": "Settings",
+        "index": 1
+      },
+      {
+        "id": "account-circle-3",
+        "kind": "button",
+        "label": "Account Circle",
+        "index": 2
+      },
+      {
+        "id": "filter-4",
+        "kind": "button",
+        "label": "Filter",
+        "index": 3
+      },
+      {
+        "id": "sort-5",
+        "kind": "button",
+        "label": "Sort",
+        "index": 4
+      },
+      {
+        "id": "edit-6",
+        "kind": "button",
+        "label": "Edit",
+        "index": 5
+      },
+      {
+        "id": "edit-7",
+        "kind": "button",
+        "label": "Edit",
+        "index": 6
+      },
+      {
+        "id": "edit-8",
+        "kind": "button",
+        "label": "Edit",
+        "index": 7
+      },
+      {
+        "id": "edit-9",
+        "kind": "button",
+        "label": "Edit",
+        "index": 8
+      },
+      {
+        "id": "retry-loading-10",
+        "kind": "button",
+        "label": "Retry Loading",
+        "index": 9
+      },
+      {
+        "id": "chevron-left-11",
+        "kind": "button",
+        "label": "Chevron Left",
+        "index": 10
+      },
+      {
+        "id": "chevron-right-12",
+        "kind": "button",
+        "label": "Chevron Right",
+        "index": 11
+      },
+      {
+        "id": "edit-13",
+        "kind": "button",
+        "label": "Edit",
+        "index": 12
+      },
+      {
+        "id": "delete-14",
+        "kind": "button",
+        "label": "Delete",
+        "index": 13
+      },
+      {
+        "id": "notes-1",
+        "kind": "link",
+        "label": "Notes",
+        "href": "#",
+        "index": 0
+      },
+      {
+        "id": "insights-2",
+        "kind": "link",
+        "label": "Insights",
+        "href": "#",
+        "index": 1
+      },
+      {
+        "id": "archive-3",
+        "kind": "link",
+        "label": "Archive",
+        "href": "#",
+        "index": 2
+      },
+      {
+        "id": "settings-4",
+        "kind": "link",
+        "label": "Settings",
+        "href": "#",
+        "index": 3
+      },
+      {
+        "id": "help-5",
+        "kind": "link",
+        "label": "Help",
+        "href": "#",
+        "index": 4
+      }
+    ]
+  }
+]
