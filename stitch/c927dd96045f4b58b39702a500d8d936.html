@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Record Editor - Quick Note</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Hanken+Grotesk:wght@600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#c3c6d7",
+                        "secondary-container": "#d0e1fb",
+                        "surface-tint": "#0053db",
+                        "on-tertiary-fixed": "#360f00",
+                        "on-tertiary": "#ffffff",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "inverse-surface": "#2d3133",
+                        "tertiary": "#943700",
+                        "error-container": "#ffdad6",
+                        "background": "#f7f9fb",
+                        "surface": "#f7f9fb",
+                        "on-error": "#ffffff",
+                        "primary": "#004ac6",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "error": "#ba1a1a",
+                        "surface-bright": "#f7f9fb",
+                        "surface-dim": "#d8dadc",
+                        "surface-container-low": "#f2f4f6",
+                        "on-secondary-container": "#54647a",
+                        "tertiary-fixed": "#ffdbcd",
+                        "inverse-primary": "#b4c5ff",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-background": "#191c1e",
+                        "secondary": "#505f76",
+                        "surface-container-highest": "#e0e3e5",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "outline": "#737686",
+                        "on-tertiary-container": "#ffede6",
+                        "surface-variant": "#e0e3e5",
+                        "on-surface": "#191c1e",
+                        "on-primary-fixed": "#00174b",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-high": "#e6e8ea",
+                        "surface-container": "#eceef0",
+                        "on-surface-variant": "#434655",
+                        "secondary-fixed": "#d3e4fe",
+                        "on-secondary-fixed": "#0b1c30",
+                        "on-secondary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "primary-fixed": "#dbe1ff",
+                        "tertiary-container": "#bc4800",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#eeefff",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "primary-container": "#2563eb"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "margin-desktop": "24px",
+                        "margin-mobile": "16px",
+                        "xl": "32px",
+                        "sm": "8px",
+                        "lg": "24px",
+                        "gutter": "16px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "base": "4px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "label-sm": ["JetBrains Mono"],
+                        "body-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "label-md": ["JetBrains Mono"],
+                        "headline-md": ["Hanken Grotesk"]
+                    },
+                    "fontSize": {
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-lg": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "label-sm": ["10px", { "lineHeight": "14px", "fontWeight": "500" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "500" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #f7f9fb; color: #191c1e; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .material-symbols-outlined.fill { font-variation-settings: 'FILL' 1; }
+        
+        /* Custom Input Styles */
+        .q-input:focus {
+            outline: none;
+            border-color: #004ac6;
+            box-shadow: 0 0 0 2px rgba(0, 74, 198, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col md:flex-row font-body-md">
+<!-- Mobile Top Navigation -->
+<header class="md:hidden sticky top-0 z-50 bg-surface text-primary border-b border-outline-variant w-full">
+<div class="flex justify-between items-center w-full px-margin-mobile max-w-7xl mx-auto h-16">
+<span class="font-headline-md text-headline-md font-bold text-on-surface">Quick Note</span>
+<div class="flex items-center gap-md">
+<button class="text-secondary hover:text-primary transition-colors duration-150">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="text-secondary hover:text-primary transition-colors duration-150">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+<button class="bg-primary text-on-primary px-4 py-2 rounded font-label-md text-label-md">
+                    Create
+                </button>
+</div>
+</div>
+<!-- Mobile Nav Links -->
+<nav class="flex px-margin-mobile gap-md border-t border-outline-variant bg-surface overflow-x-auto">
+<a class="text-primary font-bold border-b-2 border-primary pb-1 py-3 px-2 whitespace-nowrap active opacity-80 transition-opacity duration-150" href="#">Notes</a>
+<a class="text-secondary py-3 px-2 whitespace-nowrap hover:text-primary transition-colors duration-150" href="#">Insights</a>
+</nav>
+</header>
+<!-- Desktop Side Navigation -->
+<aside class="hidden md:flex flex-col h-screen py-lg bg-surface-container-low text-primary font-label-md text-label-md fixed left-0 top-0 w-60 border-r border-outline-variant z-40 shrink-0">
+<div class="px-md mb-xl flex items-center gap-sm">
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="A minimalist abstract user avatar icon with subtle blue gradients on a white background, highly legible and sharp." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsW9nkaA3kv4_daTK5erEivr6gcy0uZmxWSVaxYbKTz0PBH9_0n8dZyYlpWlwBVrbyRrjxksPudlLuTw3peiZdopox0jZlhZGq9-EoVCpEmR48MRlDQNTbZaYmyS6zcIyqvv3EFn1-xBLtFzfzB6kNVNKXpF5qMiv0uMZh9-U5ox39F9w_epsG5lpPVbnXntMKi4w9oVTrMk0AaWHU5UBX1um1GnDE4ErTnKi4moUFPsIkyLm_-lolLmkeAI6FPjfxx4UVd3OCGLs"/>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md text-primary m-0 leading-tight">Quick Note</h1>
+<span class="font-body-sm text-body-sm text-secondary block mt-xs">Minimalist Editor</span>
+</div>
+</div>
+<div class="px-md mb-lg">
+<button class="w-full bg-primary text-on-primary py-2 rounded flex justify-center items-center gap-xs hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined" style="font-size: 18px;">add</span> New Note
+            </button>
+</div>
+<nav class="flex-1 px-sm space-y-sm">
+<a class="flex items-center gap-sm bg-secondary-container text-on-secondary-container rounded-lg px-md py-sm border-l-4 border-primary scale-95 duration-100" href="#">
+<span class="material-symbols-outlined">description</span> Notes
+            </a>
+<a class="flex items-center gap-sm text-on-surface-variant px-md py-sm hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined">analytics</span> Insights
+            </a>
+<a class="flex items-center gap-sm text-on-surface-variant px-md py-sm hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined">archive</span> Archive
+            </a>
+</nav>
+<div class="px-sm space-y-sm mt-auto">
+<a class="flex items-center gap-sm text-on-surface-variant px-md py-sm hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span> Settings
+            </a>
+<a class="flex items-center gap-sm text-on-surface-variant px-md py-sm hover:bg-surface-container-highest transition-colors" href="#">
+<span class="material-symbols-outlined">help_outline</span> Help
+            </a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-60 flex flex-col h-screen overflow-hidden">
+<!-- Editor Header Toolbar -->
+<div class="flex items-center justify-between px-margin-mobile md:px-margin-desktop py-md border-b border-outline-variant bg-surface sticky top-0 z-30 shrink-0">
+<div class="flex items-center gap-md">
+<button class="text-secondary hover:text-primary transition-colors flex items-center gap-xs font-label-md text-label-md" id="btn-cancel">
+<span class="material-symbols-outlined" style="font-size: 18px;">arrow_back</span>
+<span class="hidden sm:inline">Back to Notes</span>
+</button>
+<div class="h-6 w-px bg-outline-variant mx-sm"></div>
+<div class="flex items-center gap-xs text-secondary">
+<span class="material-symbols-outlined" style="font-size: 16px;">cloud_done</span>
+<span class="font-body-sm text-body-sm" id="save-status">Saved</span>
+</div>
+</div>
+<div class="flex items-center gap-sm">
+<button class="px-md py-sm rounded border border-outline-variant text-on-surface font-label-md text-label-md hover:bg-surface-container-low transition-colors" id="btn-cancel-top">Cancel</button>
+<button class="px-md py-sm rounded bg-primary text-on-primary font-label-md text-label-md hover:bg-primary-container transition-colors" id="btn-save">Save Note</button>
+</div>
+</div>
+<!-- Editor Canvas -->
+<div class="flex-1 overflow-y-auto px-margin-mobile md:px-margin-desktop py-lg pb-xl">
+<div class="max-w-3xl mx-auto w-full h-full flex flex-col bg-surface-container-lowest border border-outline-variant rounded p-lg md:p-xl">
+<form class="flex flex-col h-full gap-md relative" id="note-editor-form">
+<!-- Unsaved Changes Notice -->
+<div class="hidden absolute -top-12 left-0 right-0 bg-secondary-container text-on-secondary-container px-md py-sm rounded font-body-sm text-body-sm flex items-center justify-between" id="unsaved-notice">
+<span>You have unsaved changes.</span>
+<button class="text-secondary hover:text-primary" onclick="document.getElementById('unsaved-notice').classList.add('hidden')" type="button">
+<span class="material-symbols-outlined" style="font-size: 16px;">close</span>
+</button>
+</div>
+<!-- Title Field -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-label-md text-secondary" for="note-title">Title <span class="text-error">*</span></label>
+<input class="q-input w-full bg-surface-container-lowest border border-outline-variant rounded px-md py-sm font-headline-lg text-headline-lg text-on-surface placeholder:text-outline transition-all" id="note-title" name="note-title" placeholder="Enter note title..." required="" type="text"/>
+<span class="hidden text-error font-body-sm text-body-sm mt-xs flex items-center gap-xs" id="title-error">
+<span class="material-symbols-outlined" style="font-size: 14px;">error</span> Title is required.
+                        </span>
+</div>
+<!-- Tags Field -->
+<div class="flex flex-col gap-xs border-b border-outline-variant pb-md">
+<label class="font-label-md text-label-md text-secondary" for="note-tags">Tags <span class="text-outline font-normal">(Optional)</span></label>
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-outline">label</span>
+<input class="q-input flex-1 bg-transparent border-none p-0 focus:ring-0 font-body-sm text-body-sm text-on-surface placeholder:text-outline" id="note-tags" name="note-tags" placeholder="e.g. meeting, urgent, project-x" type="text"/>
+</div>
+</div>
+<!-- Body Field -->
+<div class="flex flex-col gap-xs flex-1">
+<label class="sr-only" for="note-body">Note Body</label>
+<textarea class="q-input w-full flex-1 bg-surface-container-lowest border-none resize-none p-0 focus:ring-0 font-body-lg text-body-lg text-on-surface placeholder:text-outline leading-relaxed" id="note-body" name="note-body" placeholder="Start typing your note here..."></textarea>
+</div>
+</form>
+</div>
+</div>
+</main>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const form = document.getElementById('note-editor-form');
+            const titleInput = document.getElementById('note-title');
+            const bodyInput = document.getElementById('note-body');
+            const tagsInput = document.getElementById('note-tags');
+            const titleError = document.getElementById('title-error');
+            const saveBtn = document.getElementById('btn-save');
+            const cancelBtn = document.getElementById('btn-cancel');
+            const cancelTopBtn = document.getElementById('btn-cancel-top');
+            const statusIndicator = document.getElementById('save-status');
+            const statusIcon = statusIndicator.previousElementSibling;
+            const unsavedNotice = document.getElementById('unsaved-notice');
+
+            let isDirty = false;
+
+            const markDirty = () => {
+                if (!isDirty) {
+                    isDirty = true;
+                    statusIndicator.textContent = 'Unsaved changes';
+                    statusIcon.textContent = 'sync_problem';
+                    statusIndicator.parentElement.classList.add('text-secondary-fixed-dim');
+                    unsavedNotice.classList.remove('hidden');
+                }
+            };
+
+            const markClean = () => {
+                isDirty = false;
+                const now = new Date();
+                const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+                statusIndicator.textContent = `Last saved at ${timeString}`;
+                statusIcon.textContent = 'cloud_done';
+                statusIndicator.parentElement.classList.remove('text-secondary-fixed-dim');
+                unsavedNotice.classList.add('hidden');
+            };
+
+            // Event Listeners for inputs
+            titleInput.addEventListener('input', () => {
+                markDirty();
+                if (titleInput.value.trim() !== '') {
+                    titleError.classList.add('hidden');
+                    titleInput.classList.remove('border-error');
+                }
+            });
+            bodyInput.addEventListener('input', markDirty);
+            tagsInput.addEventListener('input', markDirty);
+
+            // Save Action
+            const handleSave = (e) => {
+                e.preventDefault();
+                if (titleInput.value.trim() === '') {
+                    titleError.classList.remove('hidden');
+                    titleInput.classList.add('border-error');
+                    titleInput.focus();
+                    return;
+                }
+                
+                // Simulate save process
+                saveBtn.textContent = 'Saving...';
+                saveBtn.disabled = true;
+                
+                setTimeout(() => {
+                    markClean();
+                    saveBtn.textContent = 'Save Note';
+                    saveBtn.disabled = false;
+                }, 800);
+            };
+
+            saveBtn.addEventListener('click', handleSave);
+
+            // Cancel Action
+            const handleCancel = (e) => {
+                e.preventDefault();
+                if (isDirty) {
+                    const confirmLeave = confirm('You have unsaved changes. Are you sure you want to leave?');
+                    if (confirmLeave) {
+                        // Navigate away logic here
+                        console.log('Navigating away discarding changes');
+                    }
+                } else {
+                    // Navigate away logic here
+                    console.log('Navigating back to list');
+                }
+            };
+
+            cancelBtn.addEventListener('click', handleCancel);
+            cancelTopBtn.addEventListener('click', handleCancel);
+            
+            // Initial focus
+            titleInput.focus();
+        });
+    </script>
+</body></html>

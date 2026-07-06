@@ -1,0 +1,29 @@
+[
+  {
+    "screenId": "99eea68841f948e3b864707c968e4e0f",
+    "name": "Insights - Quick Note",
+    "type": "app-screen",
+    "description": "Insights - Quick Note screen",
+    "surfaceIds": [
+      "SURF_INSIGHTS"
+    ]
+  },
+  {
+    "screenId": "c927dd96045f4b58b39702a500d8d936",
+    "name": "Record Editor - Quick Note",
+    "type": "form",
+    "description": "Record Editor - Quick Note screen",
+    "surfaceIds": [
+      "SURF_RECORD_EDITOR"
+    ]
+  },
+  {
+    "screenId": "db509871a0134c329f3053d7584c2513",
+    "name": "Record Operations - Quick Note",
+    "type": "app-screen",
+    "description": "Record Operations - Quick Note screen",
+    "surfaceIds": [
+      "SURF_RECORD_OPERATIONS"
+    ]
+  }
+]
