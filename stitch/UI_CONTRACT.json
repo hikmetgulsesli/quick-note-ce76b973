@@ -1,0 +1,599 @@
+[
+  {
+    "screenId": "99eea68841f948e3b864707c968e4e0f",
+    "screenTitle": "Insights - Quick Note",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "link",
+        "label": "Notes",
+        "href": "#",
+        "line": 123
+      },
+      {
+        "type": "link",
+        "label": "Insights",
+        "href": "#",
+        "line": 127
+      },
+      {
+        "type": "link",
+        "label": "archive",
+        "href": "#",
+        "line": 131
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 137
+      },
+      {
+        "type": "link",
+        "label": "Help",
+        "href": "#",
+        "line": 141
+      },
+      {
+        "type": "link",
+        "label": "Review them",
+        "href": "#",
+        "line": 267
+      },
+      {
+        "type": "button",
+        "label": "New Note",
+        "line": 117
+      },
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 153
+      },
+      {
+        "type": "button",
+        "label": "account_circle",
+        "line": 154
+      },
+      {
+        "type": "button",
+        "label": "Filter",
+        "line": 166
+      },
+      {
+        "type": "button",
+        "label": "Export",
+        "line": 170
+      }
+    ],
+    "navigation": [
+      {
+        "type": "link",
+        "label": "Notes",
+        "href": "#",
+        "line": 123
+      },
+      {
+        "type": "link",
+        "label": "Insights",
+        "href": "#",
+        "line": 127
+      },
+      {
+        "type": "link",
+        "label": "archive",
+        "href": "#",
+        "line": 131
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 137
+      },
+      {
+        "type": "link",
+        "label": "Help",
+        "href": "#",
+        "line": 141
+      },
+      {
+        "type": "link",
+        "label": "Review them",
+        "href": "#",
+        "line": 267
+      }
+    ],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "New Note",
+        "line": 117
+      },
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 153
+      },
+      {
+        "type": "button",
+        "label": "account_circle",
+        "line": 154
+      },
+      {
+        "type": "button",
+        "label": "Filter",
+        "line": 166
+      },
+      {
+        "type": "button",
+        "label": "Export",
+        "line": 170
+      }
+    ],
+    "inputs": [],
+    "hardcodedData": [],
+    "totalInteractive": 11,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "c927dd96045f4b58b39702a500d8d936",
+    "screenTitle": "Record Editor - Quick Note",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "link",
+        "label": "Notes",
+        "href": "#",
+        "line": 136
+      },
+      {
+        "type": "link",
+        "label": "Insights",
+        "href": "#",
+        "line": 137
+      },
+      {
+        "type": "link",
+        "label": "Notes",
+        "href": "#",
+        "line": 157
+      },
+      {
+        "type": "link",
+        "label": "Insights",
+        "href": "#",
+        "line": 160
+      },
+      {
+        "type": "link",
+        "label": "archive",
+        "href": "#",
+        "line": 163
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 168
+      },
+      {
+        "type": "link",
+        "label": "Help",
+        "href": "#",
+        "line": 171
+      },
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 123
+      },
+      {
+        "type": "button",
+        "label": "account_circle",
+        "line": 126
+      },
+      {
+        "type": "button",
+        "label": "Create",
+        "line": 129
+      },
+      {
+        "type": "button",
+        "label": "New Note",
+        "line": 152
+      },
+      {
+        "type": "button",
+        "label": "Back to Notes",
+        "line": 181
+      },
+      {
+        "type": "button",
+        "label": "Cancel",
+        "line": 192
+      },
+      {
+        "type": "button",
+        "label": "Save Note",
+        "line": 193
+      },
+      {
+        "type": "button",
+        "label": "close",
+        "line": 203
+      },
+      {
+        "type": "input",
+        "label": "Enter note title...",
+        "inputType": "text",
+        "placeholder": "Enter note title...",
+        "line": 210
+      },
+      {
+        "type": "input",
+        "label": "e.g. meeting, urgent, project-x",
+        "inputType": "text",
+        "placeholder": "e.g. meeting, urgent, project-x",
+        "line": 220
+      },
+      {
+        "type": "input",
+        "label": "Start typing your note here...",
+        "inputType": "textarea",
+        "placeholder": "Start typing your note here...",
+        "line": 226
+      },
+      {
+        "type": "form",
+        "label": "form",
+        "line": 199
+      }
+    ],
+    "navigation": [
+      {
+        "type": "link",
+        "label": "Notes",
+        "href": "#",
+        "line": 136
+      },
+      {
+        "type": "link",
+        "label": "Insights",
+        "href": "#",
+        "line": 137
+      },
+      {
+        "type": "link",
+        "label": "Notes",
+        "href": "#",
+        "line": 157
+      },
+      {
+        "type": "link",
+        "label": "Insights",
+        "href": "#",
+        "line": 160
+      },
+      {
+        "type": "link",
+        "label": "archive",
+        "href": "#",
+        "line": 163
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 168
+      },
+      {
+        "type": "link",
+        "label": "Help",
+        "href": "#",
+        "line": 171
+      }
+    ],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 123
+      },
+      {
+        "type": "button",
+        "label": "account_circle",
+        "line": 126
+      },
+      {
+        "type": "button",
+        "label": "Create",
+        "line": 129
+      },
+      {
+        "type": "button",
+        "label": "New Note",
+        "line": 152
+      },
+      {
+        "type": "button",
+        "label": "Back to Notes",
+        "line": 181
+      },
+      {
+        "type": "button",
+        "label": "Cancel",
+        "line": 192
+      },
+      {
+        "type": "button",
+        "label": "Save Note",
+        "line": 193
+      },
+      {
+        "type": "button",
+        "label": "close",
+        "line": 203
+      }
+    ],
+    "inputs": [
+      {
+        "type": "input",
+        "label": "Enter note title...",
+        "inputType": "text",
+        "placeholder": "Enter note title...",
+        "line": 210
+      },
+      {
+        "type": "input",
+        "label": "e.g. meeting, urgent, project-x",
+        "inputType": "text",
+        "placeholder": "e.g. meeting, urgent, project-x",
+        "line": 220
+      },
+      {
+        "type": "input",
+        "label": "Start typing your note here...",
+        "inputType": "textarea",
+        "placeholder": "Start typing your note here...",
+        "line": 226
+      }
+    ],
+    "hardcodedData": [],
+    "totalInteractive": 19,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  },
+  {
+    "screenId": "db509871a0134c329f3053d7584c2513",
+    "screenTitle": "Record Operations - Quick Note",
+    "deviceType": "DESKTOP",
+    "elements": [
+      {
+        "type": "link",
+        "label": "Notes",
+        "href": "#",
+        "line": 124
+      },
+      {
+        "type": "link",
+        "label": "Insights",
+        "href": "#",
+        "line": 128
+      },
+      {
+        "type": "link",
+        "label": "archive",
+        "href": "#",
+        "line": 132
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 138
+      },
+      {
+        "type": "link",
+        "label": "Help",
+        "href": "#",
+        "line": 142
+      },
+      {
+        "type": "button",
+        "label": "New Note",
+        "line": 118
+      },
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 154
+      },
+      {
+        "type": "button",
+        "label": "account_circle",
+        "line": 157
+      },
+      {
+        "type": "button",
+        "label": "Filter",
+        "line": 196
+      },
+      {
+        "type": "button",
+        "label": "Sort",
+        "line": 199
+      },
+      {
+        "type": "button",
+        "label": "edit",
+        "line": 221
+      },
+      {
+        "type": "button",
+        "label": "edit",
+        "line": 230
+      },
+      {
+        "type": "button",
+        "label": "edit",
+        "line": 242
+      },
+      {
+        "type": "button",
+        "label": "edit",
+        "line": 251
+      },
+      {
+        "type": "button",
+        "label": "Retry Loading",
+        "line": 258
+      },
+      {
+        "type": "button",
+        "label": "chevron_left",
+        "line": 267
+      },
+      {
+        "type": "button",
+        "label": "chevron_right",
+        "line": 268
+      },
+      {
+        "type": "button",
+        "label": "Edit",
+        "line": 277
+      },
+      {
+        "type": "button",
+        "label": "Delete",
+        "line": 278
+      },
+      {
+        "type": "input",
+        "label": "Search notes...",
+        "inputType": "text",
+        "placeholder": "Search notes...",
+        "line": 193
+      }
+    ],
+    "navigation": [
+      {
+        "type": "link",
+        "label": "Notes",
+        "href": "#",
+        "line": 124
+      },
+      {
+        "type": "link",
+        "label": "Insights",
+        "href": "#",
+        "line": 128
+      },
+      {
+        "type": "link",
+        "label": "archive",
+        "href": "#",
+        "line": 132
+      },
+      {
+        "type": "link",
+        "label": "settings",
+        "href": "#",
+        "line": 138
+      },
+      {
+        "type": "link",
+        "label": "Help",
+        "href": "#",
+        "line": 142
+      }
+    ],
+    "buttons": [
+      {
+        "type": "button",
+        "label": "New Note",
+        "line": 118
+      },
+      {
+        "type": "button",
+        "label": "settings",
+        "line": 154
+      },
+      {
+        "type": "button",
+        "label": "account_circle",
+        "line": 157
+      },
+      {
+        "type": "button",
+        "label": "Filter",
+        "line": 196
+      },
+      {
+        "type": "button",
+        "label": "Sort",
+        "line": 199
+      },
+      {
+        "type": "button",
+        "label": "edit",
+        "line": 221
+      },
+      {
+        "type": "button",
+        "label": "edit",
+        "line": 230
+      },
+      {
+        "type": "button",
+        "label": "edit",
+        "line": 242
+      },
+      {
+        "type": "button",
+        "label": "edit",
+        "line": 251
+      },
+      {
+        "type": "button",
+        "label": "Retry Loading",
+        "line": 258
+      },
+      {
+        "type": "button",
+        "label": "chevron_left",
+        "line": 267
+      },
+      {
+        "type": "button",
+        "label": "chevron_right",
+        "line": 268
+      },
+      {
+        "type": "button",
+        "label": "Edit",
+        "line": 277
+      },
+      {
+        "type": "button",
+        "label": "Delete",
+        "line": 278
+      }
+    ],
+    "inputs": [
+      {
+        "type": "input",
+        "label": "Search notes...",
+        "inputType": "text",
+        "placeholder": "Search notes...",
+        "line": 193
+      }
+    ],
+    "hardcodedData": [],
+    "totalInteractive": 20,
+    "requiresRouter": false,
+    "requiresDragDrop": false
+  }
+]
