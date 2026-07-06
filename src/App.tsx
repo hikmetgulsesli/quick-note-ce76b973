@@ -58,10 +58,12 @@ function ShellBootstrapBridge() {
   const store = useQuickNoteStore();
   useEffect(() => {
     mountQuickNoteAppBridge(store);
+  }, [store]);
+  useEffect(() => {
     return () => {
       unmountQuickNoteAppBridge();
     };
-  }, [store]);
+  }, []);
   return null;
 }
 

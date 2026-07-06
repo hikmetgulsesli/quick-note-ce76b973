@@ -164,11 +164,13 @@ export function QuickNoteProvider({
     }
     const ok = saveQuickNoteState(state);
     if (!ok) {
-      dispatch({
-        type: 'SET_STORAGE_STATUS',
-        status: 'error',
-        message: 'Could not save state to local storage',
-      });
+      if (state.storageStatus !== 'error') {
+        dispatch({
+          type: 'SET_STORAGE_STATUS',
+          status: 'error',
+          message: 'Could not save state to local storage',
+        });
+      }
     } else if (state.storageStatus !== 'ready') {
       dispatch({ type: 'SET_STORAGE_STATUS', status: 'ready' });
     }

@@ -68,7 +68,8 @@ function sanitizeState(raw: unknown): QuickNoteState | null {
   if (!isQuickNoteSurfaceId(candidate.activeSurface)) return null;
   if (!isQuickNotePanelId(candidate.activePanel)) return null;
   const selectedRecordId =
-    typeof candidate.selectedRecordId === 'string' || candidate.selectedRecordId === null
+    typeof candidate.selectedRecordId === 'string' &&
+    records.some((r) => r.id === candidate.selectedRecordId)
       ? (candidate.selectedRecordId as string | null)
       : null;
   return {
